@@ -4,12 +4,18 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<!-- <quill-editor
- [styles]="{height: '200px'}" 
-(onFocus)="focus($event)" 
-(onEditorChanged)="changedEditor($event)" 
-(onBlur)="blur($event)" 
-(onEditorCreated)="created($event)"
-></quill-editor> -->
-<ejs-richtexteditor></ejs-richtexteditor>
+
+
+<form #form='ngForm' (ngSubmit)="onSubmit(form)">
+  <div class="form-group"> 
+      <ejs-richtexteditor #fromRTE [(value)]='value' required name="name" [(ngModel)]="value" ></ejs-richtexteditor>
+      <button type="submit" ejs-button>Submit</button>
+  </div>
+</form><br>
+<ejs-richtexteditor></ejs-richtexteditor><br>
+
+<ejs-richtexteditor #toolsRTE id='alltoolRTE' [toolbarSettings]='tools' >
+</ejs-richtexteditor><br>
+<ejs-richtexteditor id='defaultRTE' [(value)]='value' ></ejs-richtexteditor><br>
+
 <router-outlet></router-outlet>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,30 +8,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test-ngx-quill';  
-  blured = false;
-  focused = false;
 
-  created(event) {
-    // tslint:disable-next-line:no-console
-    console.log('editor-created', event);
-  }
+  public value: string = ' <p>The RichTextEditor triggers events based on its actions. </p>'+
+  '<p> The events can be used as an extension point to perform custom operations.</p>';
 
-  changedEditor(event) {
-    // tslint:disable-next-line:no-console
-    console.log('editor-change', event);
-  }
+  public tools: object = {
+    items: [
+            'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+            'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+            'LowerCase', 'UpperCase', '|', 'Undo', 'Redo', '|',
+            'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+            'Indent', 'Outdent', '|', 'CreateLink','CreateTable',
+            'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
+    };
+   
 
-  focus($event) {
-    // tslint:disable-next-line:no-console
-    console.log('focus', $event);
-    this.focused = true;
-    this.blured = false;
-  }
-
-  blur($event) {
-    // tslint:disable-next-line:no-console
-    console.log('blur', $event);
-    this.focused = false;
-    this.blured = true;
+  onSubmit(form: NgForm): void {
+    alert(form.value.name);
   }
 }
